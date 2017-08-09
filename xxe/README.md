@@ -118,6 +118,7 @@ daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 
 * TODO:
   * dump info from this document: https://web-in-security.blogspot.ca/2016/03/xxe-cheat-sheet.html
+  * Investigate: https://github.com/enjoiz/XXEinjector
 * SSRF - Server Side Request Forgery
 * XML Schema Poisoning
 * Schema SSRF
