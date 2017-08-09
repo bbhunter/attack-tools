@@ -1,6 +1,5 @@
 # Payloads:
 
-
 #### Simple Example
 
 ```
@@ -103,6 +102,7 @@ daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 
 # Useful Links:
 
+* Simple server: `python -m SimpleHTTPServer 8080`
 * Definitions:
   * [DTD Overview](http://www.informit.com/articles/article.aspx?p=24992&seqNum=5)
   * [General Entity & Parameter Entity Declarations](http://xmlwriter.net/xml_guide/entity_declaration.shtml)
@@ -116,6 +116,8 @@ daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 
 # Future Research:
 
+* TODO:
+  * dump info from this document: https://web-in-security.blogspot.ca/2016/03/xxe-cheat-sheet.html
 * SSRF - Server Side Request Forgery
 * XML Schema Poisoning
 * Schema SSRF
