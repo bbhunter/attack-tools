@@ -1,9 +1,10 @@
 ### To Read:
 
-* Web Application Hackers Handbook
-* OWASP Testing Guide: https://www.owasp.org/index.php/OWASP_Testing_Project
-* Penetration Testings: http://amzn.to/2dhHTSn
-* The Hacker Playbook 2: Practical Guide to Penetration Testing: http://amzn.to/2d9wYKa
+* Art of Software Security Assessment
+* [Web Application Hackers Handbook](https://www.amazon.ca/Web-Application-Hackers-Handbook-Exploiting/dp/1118026470)
+* [OWASP Testing Guide](https://www.owasp.org/index.php/OWASP_Testing_Project)
+* [Penetration Testings](http://amzn.to/2dhHTSn)
+* [The Hacker Playbook 2: Practical Guide to Penetration Testing](http://amzn.to/2d9wYKa)
 
 ### Blog Reading:
 
