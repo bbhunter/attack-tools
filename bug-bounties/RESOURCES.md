@@ -37,6 +37,8 @@
 * [How to report a bug](https://researcherdocs.bugcrowd.com/docs/reporting-a-bug)
 * [How to approach a target](https://forum.bugcrowd.com/t/how-do-you-approach-a-target/293/2)
 * [How to shot web](https://www.youtube.com/watch?v=VtFuAH19Qz0) w/ [slides](https://www.slideshare.net/bugcrowd/how-do-i-shot-web-jason-haddix-at-defcon-23)
+* [List of bug bounty finds](https://www.facebook.com/notes/phwd/facebook-bug-bounties/707217202701640)
+  * Copy/paste into here
 
 **XSS**
 
