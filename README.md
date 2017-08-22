@@ -6,6 +6,11 @@ Steps:
   * Linked Resources:
     * Find inscope domains with enum-domains
     * Port scan with nmap: `nmap -sS -A -PN -p- --script=http-title dontscanme.bro`
+    * via: virustotal
+    * via: similarweb
+    * Scan subdomains for popular services / plugins
+      * curl subdomain, then cat response & grep for service strings
+        * eg: facebook, wordpress, surveygizmo, aws, shopify, unbounce, fastly, heroku, github, desk, tumblr
   * Unlinked Resources:
     * `dir-buster` to brute force
       * use seclists to augment:
@@ -43,3 +48,11 @@ acme.com/controlpanel/[bruteforce here now]
         * want to get tokens / access tokens
         * http://homakov.blogspot.se/2013/02/hacking-facebook-with-oauth2-and-chrome.html 
         * http://www.breaksec.com/?p=6039 Facebook Connect
+  * 3rd Party Scripts
+    * look for url downloads in scripts
+      * are there url query parameters used in scripts?
+    * `(get)?(query|url|qs|hash)param`
+    * `location\.(hash|href|search)\.match`
+    * bypass Content Security Policy
+      * Look at CSP domains, use those as attack vector
+      * eg: `<script src="mixpanel.com?callback=alert(1)">`
