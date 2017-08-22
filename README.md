@@ -35,3 +35,11 @@ acme.com/controlpanel/[bruteforce here now]
       * xss.cx
       * xssposed.org
       * twitter search
+  * SWFs search:
+    * Google dorks: `site:url.com ext:swf`
+  * Login w/ Facebook connect
+    * look for `redirect_uri` & open redirects
+      * Links to learn, I don't understand open redirect:
+        * want to get tokens / access tokens
+        * http://homakov.blogspot.se/2013/02/hacking-facebook-with-oauth2-and-chrome.html 
+        * http://www.breaksec.com/?p=6039 Facebook Connect
