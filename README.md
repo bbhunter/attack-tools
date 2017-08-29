@@ -5,7 +5,20 @@ Steps:
 * Discovery / Mapping:
   * Linked Resources:
     * Find inscope domains with enum-domains
-    * Port scan with nmap: `nmap -sS -A -PN -p- --script=http-title dontscanme.bro`
+      * Try to eliminate cloudflare:
+        * Use enum-domains `csv` list for non-cloudflair ips
+        * historical lookup: http://toolbar.netcraft.com/site_report?url=example.com
+        * dig: `dig ANY example.com`
+        * get them to send an email & check headers
+        * https://rhinosecuritylabs.com/cloud-security/cloudflare-bypassing-cloud-security/
+        * Signup & look at email headers for ip
+      * Reverse IP lookup: https://github.com/darkoperator/dnsrecon
+        * haven't tried ^ yet
+   * nmap scans:
+      * Port scan: `nmap -sS -A -PN -p- --script=http-title example.com`
+        * `nmap-domains/scan.sh` for going through .lst
+      * DNS brute force: `nmap --script=dns* example.com`
+      * Host search: `nmap -p 80 --script=hostmap* example.com`
     * via: virustotal => `https://virustotal.com/en/domain/<domain>/information/`
       * Observed subdomains
     * via: similarweb
@@ -14,7 +27,6 @@ Steps:
         * eg: facebook, wordpress, surveygizmo, aws, shopify, unbounce, fastly, heroku, github, desk, tumblr
       * Save so that you can go back historically if you find vulns
     * CloudFlare unmasking
-      * https://rhinosecuritylabs.com/cloud-security/cloudflare-bypassing-cloud-security/
   * Unlinked Resources:
     * `dir-buster` to brute force
       * use seclists to augment:
@@ -61,6 +73,27 @@ acme.com/controlpanel/[bruteforce here now]
       * Look at CSP domains, use those as attack vector
       * eg: `<script src="mixpanel.com?callback=alert(1)">`
 
+# Attacking Services:
+
+### FTP:
+
+* FTP-Brute: `nmap --script=ftp* -p 21 target.com`
+
+### SSH:
+
+* SSH-Brute: `nmap --script=ssh* -p 22 target.com`
+
+### SMTP:
+
+* Enum users: `nmap –script=smtp-enum-users target.com`
+* http://pentestmonkey.net/tools/user-enumeration/smtp-user-enum
+
+### EPMD (aka rabbbitmq):
+
+* `nmap -p 4369 --script epmd-info <target>`
+
+# Attacking Websites
+
 ### User Enumeration
 
 * Timing Attack: Try to register / reset password / etc
@@ -72,3 +105,4 @@ acme.com/controlpanel/[bruteforce here now]
 * TFA backup codes
 * TFA codes
 * Password reset tokens
+
