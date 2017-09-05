@@ -6,11 +6,13 @@ Steps:
   * Linked Resources:
     * Find inscope domains with enum-domains
     * Port scan with nmap: `nmap -sS -A -PN -p- --script=http-title dontscanme.bro`
-    * via: virustotal
+    * via: virustotal => `https://virustotal.com/en/domain/<domain>/information/`
+      * Observed subdomains
     * via: similarweb
     * Scan subdomains for popular services / plugins
       * curl subdomain, then cat response & grep for service strings
         * eg: facebook, wordpress, surveygizmo, aws, shopify, unbounce, fastly, heroku, github, desk, tumblr
+      * Save so that you can go back historically if you find vulns
   * Unlinked Resources:
     * `dir-buster` to brute force
       * use seclists to augment:
