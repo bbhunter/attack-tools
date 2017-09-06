@@ -58,3 +58,15 @@ acme.com/controlpanel/[bruteforce here now]
     * bypass Content Security Policy
       * Look at CSP domains, use those as attack vector
       * eg: `<script src="mixpanel.com?callback=alert(1)">`
+
+### User Enumeration
+
+* Timing Attack: Try to register / reset password / etc
+  * Time how long it takes for known success vs known failed
+  * Ref: http://cwe.mitre.org/data/definitions/208
+
+### Brute Force
+
+* TFA backup codes
+* TFA codes
+* Password reset tokens
