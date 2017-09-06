@@ -13,6 +13,8 @@ Steps:
       * curl subdomain, then cat response & grep for service strings
         * eg: facebook, wordpress, surveygizmo, aws, shopify, unbounce, fastly, heroku, github, desk, tumblr
       * Save so that you can go back historically if you find vulns
+    * CloudFlare unmasking
+      * https://rhinosecuritylabs.com/cloud-security/cloudflare-bypassing-cloud-security/
   * Unlinked Resources:
     * `dir-buster` to brute force
       * use seclists to augment:
