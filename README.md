@@ -72,6 +72,16 @@ acme.com/controlpanel/[bruteforce here now]
     * bypass Content Security Policy
       * Look at CSP domains, use those as attack vector
       * eg: `<script src="mixpanel.com?callback=alert(1)">`
+* Initial Assessment
+  1. Visit the search, registration, contact, password reset, and comment forms and hit them with your polyglot strings
+  2. Scan those specific functions with Burp’s built-in scanner
+  3. Check your cookie, log out, check cookie, log in, check cookie. Submit old cookie, see if access.
+  4. Perform user enumeration checks on login, registration, and password reset.
+  5. Do a reset and see if; the password comes plaintext, uses a URL based token, is predictable, can be used multiple times, or logs you in automatically
+  6. Find numeric account identifiers anywhere in URLs and rotate them for context change
+  7. Find the security-sensitive function(s) or files and see if vulnerable to non-auth browsing (idors), lower-auth browsing, CSRF, CSRF protection bypass, and see if they can be done over HTTP.
+  8. Directory brute for top short list on SecLists
+  9. Check upload functions for alternate file types that can execute code (xss or php/etc/etc)
 
 # Attacking Services:
 
@@ -113,20 +123,103 @@ acme.com/controlpanel/[bruteforce here now]
 * polyglot payloads:
 
 ```
-<PLAINTEXT>
-"><img src=x onerror=confirm(1);>
-jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert()//>\x3e
-';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
-'">><marquee><img src=x onerror=confirm(1)></marquee>"></plaintext\></|\><plaintext/onmouseover=prompt(1)><script>prompt(1)</script>@gmail.com<isindex formaction=javascript:alert(/XSS/) type=submit>'-->"></script><script>alert(1)</script>"><img/id="confirm&lpar;1)"/alt="/"src="/"onerror=eval(id&%23x29;>'"><img src="http://i.imgur.com/P8mL8.jpg">
-" onclick=alert(1)//<button ' onclick=alert(1)//> */ alert(1)//
+1. <PLAINTEXT>
+2. "><img src=x onerror=confirm(1);>
+3. jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert()//>\x3e
+4. ';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+5. '">><marquee><img src=x onerror=confirm(1)></marquee>"></plaintext\></|\><plaintext/onmouseover=prompt(1)><script>prompt(1)</script>@gmail.com<isindex formaction=javascript:alert(/XSS/) type=submit>'-->"></script><script>alert(1)</script>"><img/id="confirm&lpar;1)"/alt="/"src="/"onerror=eval(id&%23x29;>'"><img src="http://i.imgur.com/P8mL8.jpg">
+6. " onclick=alert(1)//<button ' onclick=alert(1)//> */ alert(1)//
+7. javascript://'/</title></style></textarea></script>--><p" %0A onclick=alert()//>*/alert()/*
 ```
 
 * 3rd party vectors:
   * facebook login, google login, etc.
 * dynamic anchor tags in url: `http://example.com#<xss-here>`
 * in redirects
-* js embedded in swf
+* js embedded in swf: have parameters that can be injected
+  * cure53/flashbang
 * XSS'd username + password reset
+* event / meeting names
+* File upload names
+
+### SQLi
+
+* polyglots:
+
+```
+1. SLEEP(10) /*' or SLEEP(10) or '" or SLEEP(10) or "*/
+```
+
+* git:danielmiessier/SecLists -> fuzzing
+* blind is most common; error based rarer
+* Sqlmap is the best tool
+  * Use fuzz string, then sqlmap
+* Take burp logfile & run sqlmap with `-l`
+  * Burp plugin: SQLiPy right click to send to sqlmap
+* Common injections:
+  * id, currency values, item numbers, sorting/ordering params, json & xml values, cookie values, custom headers
+
+* Platform Specific:
+  * mySQL
+    * PentestMonkey's mySQL injection cheat sheet
+    * Reiners mySQL injection Filter Evasion Cheatsheet
+  * MSSQL
+    * EvilSQL's Error/Union/Blind MSSQL Cheatsheet
+    * PentestMonkey's MSSQL SQLi injection Cheat Sheet
+  * ORACLE
+    * PentestMonkey's Oracle SQLi Cheatsheet
+  * POSTGRESQL
+    * PentestMonkey's Postgres SQLi Cheatsheet
+  * Others
+    * Access SQLi Cheatsheet
+    * PentestMonkey's Ingres SQL Injection Cheat Sheet
+    * pentestmonkey's DB2 SQL Injection Cheat Sheet
+    * pentestmonkey's Informix SQL Injection Cheat Sheet
+    * SQLite3 Injection Cheat sheet
+    * Ruby on Rails (Active Record) SQL Injection Guide
+
+### Local File Inclusion
+
+* Find file polyglots
+* Manipulate meta-data
+* To watch: http://goo.gl/VCXPh6
+* git:danielmiessier/SecLists -> LFI
+* common params:
+  * file=, location=, locale=, path=, display=, load=, read=, retrieve=
+* hard to get right for devs
+
+### Remote File Inclusion
+
+* Common params:
+  * dest, continue, redirect, url, uri, window, next
+  * file, folder, path, style, template, php_path, doc, document, root, pg, pdf
+  * LFI params too
+* git:danielmiessier/SecLists -> LFI
+
+### CSRF
+
+* Use burp!
+* Bypasses:
+  * remove CSRF token from request
+  * remove CSRF token parameter value
+  * Add bad control characters
+  * use a second identical CSRF param
+  * change POST to GET
+* Burpy Tool (Debasish Mandal)
+  * Run against a burp log file
+
+### Privledge Escalation
+
+* Autorize burp plugin:
+  * git:quitten/autorize
+* Insecure Direct Object Reference
+  * UIDs: ++, --, negative values
+  * Check files with/without auth
+
+### Transport
+
+* HTTPS everywhere
+  * https://github.com/arvinddoraiswamy/mywebappscripts/tree/master/ForceSSL
 
 # Tools to investigate
 
