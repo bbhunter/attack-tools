@@ -10,14 +10,14 @@
     * Run `./prune`
       * generates domains.txt & ips.txt
     * Run `./ip_resolver`
-      * uses domains.txt to append to ips.txt
-      * doesn't handle dynamic ips ???
+      * uses domains.txt to append to ips.txt list
+      * doesn't handle dynamic ips --> whois check on target?
       * doesn't eliminate non-<domain> targets -- whois checks?
         * anything with 10.<blah> -- reserved domains?
         * anything with "OrgName:        Internet Assigned Numbers Authority" on whois
     * Run `./domain_resolver`
       * Checks SNI for unique domains and eliminates redirect domains
 6. Use nmap-domains tool:
-  * Need a mechanism to timeout
+  * TODO: Timeout flag to run: `nmap -T4 -A -v -Pn <domain>`
 
 
