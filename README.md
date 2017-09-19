@@ -24,7 +24,7 @@ Steps:
       * TODO: write that tool
     * nmap scans:
       * Port scan: `nmap -sS -A -PN -p- --script=http-title example.com`
-        * Alternatives: `nmap -T4 -A -v example.com`
+        * Alternatives: `nmap -T4 -A -v -Pn example.com`
         * `nmap-domains/scan.rb` to scan
       * Attack individual targets as available
   * Unlinked Resources:
