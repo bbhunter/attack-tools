@@ -24,9 +24,9 @@ Steps:
       * TODO: write that tool
     * nmap scans:
       * Port scan: `nmap -sS -A -PN -p- --script=http-title example.com`
-        * `nmap-domains/scan.sh` for going through .lst
-      * DNS brute force: `nmap --script=dns* example.com`
-      * Host search: `nmap -p 80 --script=hostmap* example.com`
+        * Alternatives: `nmap -T4 -A -v example.com`
+        * `nmap-domains/scan.rb` to scan
+      * Attack individual targets as available
   * Unlinked Resources:
     * `dir-buster` to brute force
       * use seclists to augment:
