@@ -9,15 +9,30 @@
 5. Transform results in pruner
     * Run `./prune`
       * generates domains.txt & ips.txt
-    * Run `./ip_resolver`
+    * Run `./resolve`
       * uses domains.txt to append to ips.txt list
-      * doesn't handle dynamic ips --> whois check on target?
-      * doesn't eliminate non-<domain> targets -- whois checks?
-        * anything with 10.<blah> -- reserved domains?
-        * anything with "OrgName:        Internet Assigned Numbers Authority" on whois
-    * Run `./domain_resolver`
+    * Run `./ip_prune`
+      * removes reserved domains & other non-attackable targets
+    * Run `./expander`
+      * Looks at ip addresses in list and expands to other spaces
+      * Can run ip_prune again but likely won't turn up anything
+    * Run `./redirect_prune`
+      * Removes redirect domains for redirection path
+    * TODO:
+      * Bucket into forbidden ??
       * Checks SNI for unique domains and eliminates redirect domains
 6. Use nmap-domains tool:
-  * TODO: Timeout flag to run: `nmap -T4 -A -v -Pn <domain>`
+  * Don't dump:
+    * Timeouts
+    * All 65535 scanned ports on 166.78.192.71 are filtered
+    * All 1000 scanned ports on 59.19.2fa9.ip4.static.sl-reverse.com (169.47.25.89) are filtered
+    * Anything with mail in it?
+    * Filter out traceroute?
+7. Review nmap:
+  * Search for `https?://` remove https://nmap.org, http://eclipse.org,
+  * Search for http-title: add 400s, 500s to a list
+  * Redirects: `grep http-title nmap.txt | grep redirect > redirects.txt`
+  * Search for open ports
+  * Distill down to a list of domains / interesting points to hit
 
 
