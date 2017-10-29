@@ -1,5 +1,8 @@
 A Small Set of Customized Tools for Merry Making
 
+Install:
+  [Gopass for bug bounties](https://github.com/justwatchcom/gopass)
+
 Steps:
 
 * Discovery / Mapping:
@@ -14,6 +17,9 @@ Steps:
         * Signup & look at email headers for ip
       * Reverse IP lookup: https://github.com/darkoperator/dnsrecon
         * haven't tried ^ yet
+      * Recon in social networks:
+        * Figure out tech stack and the like using job posting, people's experience, etc.
+        * Reddit / github / monster / LinkedIn / indeed / etc
     * via: virustotal => `https://virustotal.com/en/domain/<domain>/information/`
       * Observed subdomains
     * via: similarweb
