@@ -3,7 +3,8 @@ A Small Set of Customized Tools for Merry Making
 TODO:
   * Install: [Gopass for bug bounties](https://github.com/justwatchcom/gopass)
   * Canibalise: [Domain enum](https://blog.appsecco.com/a-penetration-testers-guide-to-sub-domain-enumeration-7d842d5570f6) &
-    [Info Gathering](https://blog.appsecco.com/open-source-intelligence-gathering-101-d2861d4429e3)
+    [Info Gathering](https://blog.appsecco.com/open-source-intelligence-gathering-101-d2861d4429e3) &
+    [reddit comments](https://www.reddit.com/r/netsec/comments/7c704k/a_penetration_testers_guide_to_subdomain/)
 
 Steps:
 
