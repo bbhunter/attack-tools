@@ -8,6 +8,7 @@ TODO:
     [HN comments](https://news.ycombinator.com/item?id=15676951) &
     [naughty strings](https://github.com/minimaxir/big-list-of-naughty-strings) &
     [seclists](https://github.com/danielmiessler/SecLists)
+* Hackbar - Firefox add-on -- looks useful
 
 Steps:
 
