@@ -5,7 +5,9 @@ TODO:
   * Canibalise: [Domain enum](https://blog.appsecco.com/a-penetration-testers-guide-to-sub-domain-enumeration-7d842d5570f6) &
     [Info Gathering](https://blog.appsecco.com/open-source-intelligence-gathering-101-d2861d4429e3) &
     [reddit comments](https://www.reddit.com/r/netsec/comments/7c704k/a_penetration_testers_guide_to_subdomain/) &
-    [HN comments](https://news.ycombinator.com/item?id=15676951)
+    [HN comments](https://news.ycombinator.com/item?id=15676951) &
+    [naughty strings](https://github.com/minimaxir/big-list-of-naughty-strings) &
+    [seclists](https://github.com/danielmiessler/SecLists)
 
 Steps:
 

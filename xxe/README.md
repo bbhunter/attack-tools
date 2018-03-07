@@ -135,8 +135,11 @@ daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 # Future Research:
 
 * TODO:
-  * dump info from this document: https://web-in-security.blogspot.ca/2016/03/xxe-cheat-sheet.html
+  * dump info from: https://web-in-security.blogspot.ca/2016/03/xxe-cheat-sheet.html
+  * dump info from: https://blog.zsec.uk/blind-xxe-learning/
   * Investigate: https://github.com/enjoiz/XXEinjector
+  * https://github.com/GDSSecurity/xxe-recursive-download
+  * https://media.blackhat.com/eu-13/briefings/Osipov/bh-eu-13-XML-data-osipov-slides.pdf
 * SSRF - Server Side Request Forgery
 * XML Schema Poisoning
 * Schema SSRF
@@ -144,6 +147,7 @@ daemon:x:1:1:daemon:/usr/sbin:/bin/sh
 * NDATA - how does this work?
 * Modify Content-Type header: `Content-Type: application/xml`
 * Notation -> http://www.informit.com/articles/article.aspx?p=24992&seqNum=5
+* https://github.com/enjoiz/XXEinjector
 
 # References
 
