@@ -1,0 +1,3 @@
+[submodule "git/git-dumper"]
+	path = git/git-dumper
+	url = git@github.com:arthaud/git-dumper.git
