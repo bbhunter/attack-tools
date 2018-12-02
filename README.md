@@ -8,6 +8,9 @@ TODO:
     [HN comments](https://news.ycombinator.com/item?id=15676951) &
     [naughty strings](https://github.com/minimaxir/big-list-of-naughty-strings) &
     [seclists](https://github.com/danielmiessler/SecLists)
+	[security idiots](http://securityidiots.com/Web-Pentest/LFI)
+	[payload all the things](https://github.com/swisskyrepo/PayloadsAllTheThings)
+	[polyglot payloads](https://github.com/0xsobky/HackVault/wiki/Unleashing-an-Ultimate-XSS-Polyglot)
 * Hackbar - Firefox add-on -- looks useful
 
 Steps:
@@ -30,6 +33,8 @@ Steps:
     * via: virustotal => `https://virustotal.com/en/domain/<domain>/information/`
       * Observed subdomains
     * via: similarweb
+	* Use transparent certs lookup:
+	  * https://github.com/UnaPibaGeek/ctfr
     * Scan subdomains for popular services / plugins
       * curl subdomain, then cat response & grep for service strings
         * eg: facebook, wordpress, surveygizmo, aws, shopify, unbounce, fastly, heroku, github, desk, tumblr
@@ -39,6 +44,7 @@ Steps:
       * Port scan: `nmap -sS -A -PN -p- --script=http-title example.com`
         * Alternatives: `nmap -T4 -A -v -Pn example.com`
         * `nmap-domains/scan.rb` to scan
+		* `nmap iL list-of-ips.txt`
       * Attack individual targets as available
   * Unlinked Resources:
     * `dir-buster` to brute force
